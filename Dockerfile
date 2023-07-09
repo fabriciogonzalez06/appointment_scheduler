@@ -1,5 +1,5 @@
 FROM ruby:3.2.2
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client imagemagick libvips
+RUN apt-get update -qq && apt-get install -y nodejs npm postgresql-client imagemagick libvips && npm install --global yarn
 WORKDIR /appointmentscheduler
 COPY Gemfile /appointmentscheduler/Gemfile
 COPY Gemfile.lock /appointmentscheduler/Gemfile.lock

@@ -7,16 +7,18 @@ class SessionsController < ApplicationController
 
         if user.present? && user.authenticate(params[:password])
             session[:user_id] = user.id
-            redirect_to root_url, notice: "Logged in!"
+            flash[:success]= "Logged In"
+            redirect_to root_url
         else 
-            flash.now[:alert] = "Email or password is invalid"
-            render :new
+            flash[:alert] = "Email or password is invalid"
+            redirect_to log_in_path
         end  
 
     end 
 
     def destroy
         session[:user_id] = nil 
-        redirect_to root_url, notice: "logged out!"
+        flash[:notice] = "Logged out"
+        redirect_to root_url
     end 
 end

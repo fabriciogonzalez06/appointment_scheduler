@@ -9,9 +9,11 @@ class RegistrationsController < ApplicationController
         
         if @user.save 
             session[:user_id] = @user.id
-            redirect_to root_path, notice: 'Sucessfully created account'
+            flash[:success] = "Sucessfully created account"
+            redirect_to root_path
         else  
-            redirect_to sign_up_path, notice: 'user already exists'
+            flash[:error] = 'Can not create user!'
+            redirect_to sign_up_path
         end 
     end 
 

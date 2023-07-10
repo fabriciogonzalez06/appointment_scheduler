@@ -12,8 +12,8 @@ class RegistrationsController < ApplicationController
             flash[:success] = "Sucessfully created account"
             redirect_to root_path
         else  
-            flash[:error] = 'Can not create user!'
-            redirect_to sign_up_path
+            flash[:error] = 'Can not sign up!'
+           render :new, status: :unprocessable_entity
         end 
     end 
 

@@ -1,0 +1,19 @@
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <%= link_to 'AS App', root_path, class: 'navbar-brand' %>
+
+    <div class="d-flex flex-direction-row gap-3" >
+      <a class="navbar-brand">  <%= Current.user.email %> </a>
+
+        <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuProfile" data-bs-toggle="dropdown" aria-expanded="false">
+          Profile
+        </button>
+        <ul class="dropdown-menu " aria-labelledby="dropdownMenuProfile">
+          <li> <%= link_to 'Edit password', edit_password_path, class: 'dropdown-item"' %> </li>
+          <li> <%= button_to 'Log out', logout_path, class: 'dropdown-item btn btn-link', method: :delete %> </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

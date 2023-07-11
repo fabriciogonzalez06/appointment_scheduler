@@ -12,8 +12,15 @@
 
   <body style="background-color: #E0E2E2" >
 
-    <%= render 'shared/flashes' %>
-    
-    <%= yield %>
+    <% if Current.user %>
+      <%= render 'shared/navbar' %>
+      <%= render 'shared/flashes' %>
+      <div class="container mt-3" >
+        <%= yield %>
+      </div>
+    <% else %>
+      <%= render 'shared/flashes' %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>

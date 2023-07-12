@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    include UsersInfo
+
     has_secure_password
     # attr_accessible :email, :password, :password_confirm 
 

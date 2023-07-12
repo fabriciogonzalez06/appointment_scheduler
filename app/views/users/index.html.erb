@@ -1,3 +1,32 @@
-<% @users.each do |user|  %>
-    <p> <%=  user.email %> </p>
-<% end %>
+<div class="card my-3" >
+    <div class="card-body" >
+        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"> <%= link_to 'Home', root_path %> </li>
+            <li class="breadcrumb-item active" aria-current="page"> Users (<%= @users.count %>) </li>
+        </ol>
+        </nav>
+    </div>
+</div>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @users.each do |user|  %>
+            <div class="col">
+                <div class="card">
+                
+                <div class="card-body">
+                    <h5 class="card-title"> <%= user.email %>  </h5>
+                    <p class="card-text">  
+                      <% if user.user_type == 'platform' %>
+                             <span class="badge bg-primary" > <%= user.user_type %> </span>
+                      <% else  %>
+                            <span class="badge bg-info" > <%= user.user_type %> </span>
+                      <% end %>
+                    </p>
+                    <div class="d-flex flex-row-reverse"  >
+                        <%= link_to 'Show', '#', class: 'btn btn-secondary' %>
+                    </div>
+                </div>
+                </div>
+            </div>
+    <% end %>
+</div>

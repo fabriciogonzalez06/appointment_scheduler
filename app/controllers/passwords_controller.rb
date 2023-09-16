@@ -6,8 +6,9 @@ class PasswordsController < ApplicationController
     end 
 
     def update 
+       
         if Current.user.update(password_params)
-            redirect_to root_path, notice: 'Password updated'
+            redirect_to logout_path, notice: 'Password updated'
         else
             render :edit  
         end 
@@ -16,6 +17,7 @@ class PasswordsController < ApplicationController
 
     private 
     def password_params
-        params.require(:user).permit(:password, :password_confirmation)
+        defaults = { first_login: false }
+        params.require(:user).permit(:password, :password_confirmation).reverse_merge(defaults)
     end 
 end

@@ -1,13 +1,22 @@
 <div class="card my-3" >
     <div class="card-body" >
         <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
+        <ol class="breadcrumb m-0">
             <li class="breadcrumb-item"> <%= link_to 'Home', root_path %> </li>
             <li class="breadcrumb-item active" aria-current="page"> Users (<%= @users.count %>) </li>
         </ol>
         </nav>
     </div>
 </div>
+
+<div class="card my-3" >
+    <div class="card-body"  >
+       <%= button_to new_user_path,  class: 'btn btn-success', method: :get  do  %>
+        Create
+       <% end %>
+    </div>
+</div>
+
 <div class="row row-cols-1 row-cols-md-3 g-4">
     <% @users.each do |user|  %>
             <div class="col">
@@ -23,7 +32,7 @@
                       <% end %>
                     </p>
                     <div class="d-flex flex-row-reverse"  >
-                        <%= link_to 'Show', '#', class: 'btn btn-secondary' %>
+                        <%= link_to 'Show', user_path(user) , class: 'btn btn-secondary' %>
                     </div>
                 </div>
                 </div>

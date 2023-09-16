@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     end 
 
     def require_user_logged_in!
-        redirect_to sign_in_path, alert: 'You mus be signed in' if Current.user.nil?
+        redirect_to sign_in_path, alert: 'You must be logged in' if Current.user.nil?
     end 
 
 end

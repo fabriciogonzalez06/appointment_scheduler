@@ -1,5 +1,6 @@
 class RegistrationsController < ApplicationController
 
+
     def new 
         @user = User.new 
     end 
@@ -10,7 +11,9 @@ class RegistrationsController < ApplicationController
         if @user.save 
             session[:user_id] = @user.id
             flash[:success] = "Sucessfully created account"
+
             redirect_to root_path
+                
         else  
             flash[:error] = 'Can not sign up!'
            render :new, status: :unprocessable_entity

@@ -25,10 +25,10 @@
                 <div class="card-body">
                     <h5 class="card-title"> <%= user.email %>  </h5>
                     <p class="card-text">  
-                      <% if user.user_type == 'platform' %>
-                             <span class="badge bg-primary" > <%= user.user_type %> </span>
+                      <% if user.role == 'client' %>
+                             <span class="badge bg-primary" > <%= user.role %> </span>
                       <% else  %>
-                            <span class="badge bg-info" > <%= user.user_type %> </span>
+                            <span class="badge bg-info" > <%= user.role %> </span>
                       <% end %>
                     </p>
                     <div class="d-flex flex-row-reverse"  >

@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def create 
 
       $generated_password = SecureRandom.hex(14)
-      @user = User.new( first_login: true, user_type: 'platform', email: user_params[:email], password: $generated_password, password_confirmation: $generated_password)
+      @user = User.new( first_login: true, role: 'admin', email: user_params[:email], password: $generated_password, password_confirmation: $generated_password)
 
       if @user.save 
         redirect_to @user

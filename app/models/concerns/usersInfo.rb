@@ -1,19 +1,19 @@
 module UsersInfo
     extend ActiveSupport::Concern
 
-    VALID_TYPES = ['client', 'platform']
+    VALID_ROLES = ['client', 'admin', 'mechanic']
     
     included do 
-        validates :user_type, inclusion: { in: VALID_TYPES }
+        validates :role, inclusion: { in: VALID_ROLES }
     end 
 
     class_methods do 
         def platform_count 
-            where(user_type: 'platform' )
+            where.not(role: 'client' )
         end 
     end 
 
-    def platform_user? 
-        user_type == 'platform'
+    def client_user? 
+        role == 'client'
     end 
 end 

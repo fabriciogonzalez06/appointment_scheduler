@@ -6,9 +6,12 @@
       <a class="navbar-brand">  <%= Current.user.email %> </a>
 
         <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuProfile" data-bs-toggle="dropdown" aria-expanded="false">
-          Profile
-        </button>
+        <% if !Current.user.first_login? %>
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuProfile" data-bs-toggle="dropdown" aria-expanded="false">
+            Profile
+          </button>
+        <% end %>
+       
         <ul class="dropdown-menu " aria-labelledby="dropdownMenuProfile">
           <li> <%= link_to 'Edit password', edit_password_path, class: 'dropdown-item"' %> </li>
           <li> <%= button_to 'Log out', logout_path, class: 'dropdown-item btn btn-link', method: :delete %> </li>

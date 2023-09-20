@@ -1,18 +1,44 @@
-<h1>Edit Password</h1>
-
-<%= form_with model: Current.user, url: edit_password_path do |f| %>
-
-    <div>
-        <%= f.label :password %>
-        <%= f.text_field :password %>
+<div class="card my-3">
+    <div class="card-body ">
+        <nav class="breadcrumb m-0 p-0">
+            <% if !Current.user.first_login? %>
+                <li class="breadcrumb-item"> <%= link_to 'Home', root_path %> </li>
+            <% end %>
+            <li class="breadcrumb-item active" aria-current="page" > Update password </li>
+        </nav>
     </div>
+</div>
 
-    <div>
-        <%= f.label :password_confirmation %>
-        <%= f.text_field :password_confirmation %>
-    </div>
+<div class="row d-flex justify-content-center mt-5 ">
+    <div class="col-md-6 col-sm-12 col-xs-12 ">
+        <div class="card">
+            <div class="card-body">
 
-    <div>
-        <%= f.submit 'Update password' %>
+            <%= form_with model: Current.user, url: edit_password_path do |f| %>
+
+                <div class="mb-3" >
+                    <%= f.label :password, class: 'form-label' %>
+                    <%= f.text_field :password, class: 'form-control' %>
+                </div>
+
+                <div class="mb-3" >
+                    <%= f.label :password_confirmation, class: 'form-label' %>
+                    <%= f.text_field :password_confirmation, class: 'form-control' %>
+                </div>
+
+                <% if Current.user.errors.any? %>
+                    <div class="invalid-feedback d-block">
+                        <% Current.user.errors.full_messages.each do |error| %>
+                            <p> <%= error%> </p>
+                        <% end %>
+                    </div>
+                <% end %>
+
+                <div class="d-grid gap-2" >
+                    <%= f.submit 'Update password', class: 'btn btn-primary' %>
+                </div>
+            <% end %>
+            </div>
+        </div>
     </div>
-<% end %>
+</div>
